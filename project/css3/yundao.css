@@ -1,0 +1,241 @@
+/*消除内外边距*/
+*{
+	margin: 0;
+	padding:0;
+}
+/*清除li样式*/
+li{
+	list-style:none;
+}
+.clearfix:after {  content: ""; display: block; height: 0; clear: both; visibility: hidden;  }   
+
+.clearfix {*zoom: 1;}   /* IE6、7 专有 */
+
+body{
+	background-color: #fafafa;
+}
+/* 导航栏开始 */
+.header{
+	background-color: #fff;
+	height: 100px;
+}
+.inner{
+	/* background-color: pink; */
+	height: 100px;
+	width: 1200px;
+	margin: 0 auto;
+	line-height: 100px;
+}
+.logo{
+	float: left;
+}
+.nav{
+	float: right;
+}
+.nav li{
+	float: left;
+	margin: 0 20px;
+}
+.nav li a{
+	color: #333;
+	text-decoration: none;
+}
+/* 鼠标经过的样子 */
+.nav li a:hover{
+	color: #3399ff;
+}
+/* 导航栏结束 */
+/* 插入图片 */
+.banner{
+	height: 620px;
+	background: url(../images/banner.png) no-repeat top center;
+}
+/* 服务开始 */
+.server{
+	height: 660px;
+	width: 1050px;
+/* 	background-color: pink; */
+	margin: 75px auto 0;
+}
+.server-hd{
+	border-top: 1px solid #ccc;
+	margin: 0 25px;
+}
+.server-hd h4{
+	width: 167px;
+	height: 64px;
+	margin: -30px auto 0;
+}
+.server-hd p{
+	margin: 25px auto 0;
+	font-size: 14px;
+	color: #666;
+	line-height:26px;
+	width: 845px;
+	text-align: center;
+}
+.server.bd{
+	overflow:hidden;
+}
+.server-bd li{
+	margin-top: 40px;
+	width: 316px;
+	/* height: 510px; */
+/* 	background-color: pink; */
+	float: left;
+	border:1px solid #e7e8e9;
+}
+.yingxiao{
+	margin: 0 45px;
+}
+.server-bd img{
+	margin: 40px 35px;
+}
+.server-bd h3{
+	text-align: center;
+	font-size: 24px;
+	font-weight: normal;
+	height: 40px;
+}
+.server-bd p{
+	width: 235px;
+	color:#666;
+	font-size:14px;
+	line-height: 30px;
+	margin: 0 auto;
+}
+.server-bd a{
+	display: block;
+	width: 150px;
+	height: 40px;
+	background-color: #ff9900;
+	color: #fff;
+	border: 1px solid #ff9900;
+	line-height: 40px;
+	text-align: center;
+	margin: 40px auto 0;
+	text-decoration: none;
+	font-size: 14px;
+	border-radius: 5px;
+}
+.server-bd a:hover{
+	background-color: #fff;
+	color: #ff9900;
+	border: 1px solid #ff9900;
+}
+/* 服务结束 */
+/* 经典案例开始 */
+.case{
+	margin: 100px auto 0;
+	width: 1055px;
+}
+.case-bd{
+	margin-top: 80px;
+	margin-left: 9px;
+	height: 211px;
+	position: relative;
+}
+.case-bd li{
+	width: 322px;
+	height: 211px;
+	float: left;
+	/* background-color: pink; */
+	/* background: url(../images/pro1.png) no-repeat; */
+	position: relative;
+}
+.case-bd-m{
+	margin: 0 40px;
+}
+.text{
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;	
+	background: rgba(0, 0, 0, 0.4);
+	position: absolute; 
+	left: 0;
+	bottom: 0;
+	color: #fff;
+	font-size: 12px;
+}
+.mask{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3) url(../images/fdj.png) center no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.case-bd li:hover .mask{
+	display: block;
+}
+.left,.right{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	background: rgba(0,0,0,.2);
+	color: #fff;
+	text-decoration: none;
+	line-height: 60px;
+	text-align: center;
+	font-size: 25px;
+	border-radius: 50%;
+}
+.case-bd a:hover{
+	background: rgba(0,0,0,.4);
+}
+.left{
+	left: -90px;
+}
+.right{
+	right: -90px;
+}
+/* 经典案例结束 */
+/* 合作媒体开始 */
+.media{
+	width: 1050px;
+	margin: 100px auto 0;
+}
+.media-bd {
+	width: 1048px;
+	height: 240px;
+	overflow: hidden;
+	margin: 40px auto 0;
+}
+.media-bd ul {
+	width: 1060px;
+}
+.media-bd li {
+	width: 210px;
+	height: 60px;
+	float: left;
+	border-right: 1px dashed #ccc;
+	border-bottom: 1px dashed #ccc;
+	text-align: center;
+	padding-top: 20px;
+}
+/* 合作媒体结束 */
+.footer{
+	height: 165px;
+	overflow: hidden;
+	background-color: #000;
+	text-align: center;
+	margin-top: 100px;
+	color: #fff;
+ }
+ .subnav{
+ 	margin-top: 50px;
+ }
+ .footer a{
+ 	color: #fff;
+ 	font-size: 14px;
+	text-decoration: none;
+	margin: 0,5px;
+ }
+ .footer a:hover{
+ 	color: #2288f6;
+ 	text-decoration: underline;
+ }
