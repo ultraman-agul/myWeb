@@ -1,0 +1,441 @@
+/* 引入icomoon字体 */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?iu1741');
+  src:  url('../fonts/icomoon.eot?iu1741#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?iu1741') format('truetype'),
+    url('../fonts/icomoon.woff?iu1741') format('woff'),
+    url('../fonts/icomoon.svg?iu1741#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+/* 去除外边距 */
+*{
+	margin: 0;
+	padding: 0;
+}
+/* 去除a的下划线 */
+a{
+	text-decoration: none;
+}
+/* 去除li的样式 */
+li{
+	list-style: none;
+}
+/* 去除内外边距 */
+ul{
+	margin: 0;
+	padding: 0;	
+}
+/* 去除图片下方的缝隙 */
+img{
+	vertical-align: top;
+}
+.style-red{
+	color: #f10215!important;
+}
+/* 版心宽度和居中 */
+.w{
+	width: 1190px;
+	margin: auto;
+}
+/* 向左浮动 */
+.fl{
+	float: left;
+}
+/* 向有浮动 */
+.fr{
+	float: right;
+}
+/* 顶部开始 */
+.J_event{
+	background-color: #000;/* 不用高度,下面a会撑开 */
+}
+.J_event a{
+	display: block;
+	height: 80px;
+	background: url(../images/header.jpg) no-repeat;
+	position: relative;
+}
+/* 右上方的小叉号 */
+.J_event a i{
+	width: 25px;
+	height: 25px;
+	/* background-color: pink; */
+	font-family: 'icomoon';
+	position: absolute;
+	right: 0;
+	top: 8px;
+	text-align: center;
+	font-style: normal;
+	color: #fff;
+	background: rgba(0,0,0,0.1);
+}
+/* 顶部结束 */
+/* 快捷导航开始 */
+.shortcut{
+	height: 30px;
+	line-height: 30px;
+	background-color: #e3e4e5;
+	border-bottom: 1px solid #ddd;
+	font-size: 12px;
+	color: #9D9D9D;
+}
+/* 定位小图标 */
+.pos{
+	font-family: 'icomoon';
+	font-style: normal;
+	font-size: 14px;
+	color: #f10215;
+}
+.shortcut a{
+	color: #9D9D9D;
+	text-decoration: none;
+}
+.shortcut a:hover{
+	color:#e33333;
+}
+
+.shortcut .fl li{
+	margin-left: 200px;  /* 留位置给logo */
+	height: 30px;
+}
+.shortcut .fr li{
+	float: left;
+}
+/* 用竖线隔开元素 */
+.space{
+	width: 1px;
+	height: 10px;
+	background-color: #ccc;
+	margin: 10px 12px 0;
+}
+.dropdow{
+	padding-right: 15px;
+	position: relative;
+}
+.dropdow i{
+	font-family: "icomoon";
+	font-style: normal;
+	font-size: 12px;
+	position: absolute;
+	right: 0;
+	top: -3px;
+}
+.erweima{
+	width: 60px;
+	height: 60px;
+	position: relative;
+}
+.erweima img{
+	padding: 3px;
+	border: 1px solid #ccc;
+	position: absolute;
+	top: 26px;
+	right: -10px;
+	z-index: 1;
+}
+/* 快捷导航结束 */
+/* header 开始 */
+.header{
+	height: 140px;
+	/* border-bottom: 1px solid #ddd; */
+}
+.inner{
+	height: 140px;
+	/* background-color: pink; */
+	position: relative;
+}
+.logo{					/* 左边logo部分 */
+	width: 190px;
+	height: 170px;
+	border-top: 1px solid #fff;
+	box-shadow: 0px -10px 10px rgba(0,0,0,.3);
+	position: absolute;
+	top: -30px;
+	left: 0;  /* 这里不懂为什么只能inner相对定位，logo绝对定位， */
+}							/* 不能logo相对定位，a绝对定位	 */
+.logo a{
+	display: block;
+	width: 190px;
+	height: 170px;
+	background: url(../images/logo.jpg) no-repeat;
+	text-indent: -9999px;/*  移出h1文字 */
+	overflow: hidden;  
+}
+.logo h1{
+	margin: 0;
+}
+/* 搜索框 */
+.search{
+	width: 550px;
+	height: 35px;
+	position: absolute;
+	top: 25px;
+	left: 320px;
+	background-color: purple;
+}
+.search input{
+	width: 480px;
+	height: 33px;
+	border: 1px solid #f10215;
+	padding-left: 18px;
+	font-size: 13px;
+	outline: none;
+	color: #aaa;
+	float: left;
+}
+.search button{
+	width: 50px;
+	height: 35px;
+	border: 0;
+	background-color: #f10215;
+	float: left;
+	cursor: pointer;
+}
+/* 搜索按钮的小标志 */
+.search em{
+	font-family: "icomoon";
+	color: #fff;
+	font-style: normal;
+}
+/* 搜索框内的相机 */
+.search i{
+	width: 19px;
+	height: 15px;
+	position: absolute;
+	top: 9px;
+	right: 65px;   /* 精灵图的运用 */
+	background: url(../images/sprite-search.png) no-repeat;
+	cursor: pointer;
+}
+.search i:hover{
+	background-position: -30px 0;
+}
+.hotword{   /* 热词部分 */
+	position: absolute;
+	top: 70px;
+	left: 320px;
+}
+.hotword a{
+	color: #999;
+	margin-right: 10px;
+	float: left;
+	font-size: 13px;
+}
+.hotword a:hover{
+	color: #f10215;
+}
+.myCar{    /*  购物车部分 */
+	width: 188px;
+	height: 33px;
+	border: 1px solid #ccc;
+	position: absolute;
+	top:25px;
+	right: 100px;
+	line-height: 33px;
+	text-align: center;
+	color: #f10215;
+	background-color: #fff;
+}
+.myCar i{
+	font-family: "icomoon";
+	font-style: normal;
+	/* font-size: 12px; */
+}
+.myCar a{
+	color: #f10215;
+	font-size: 12px;
+	margin: 3px;
+}
+.myCar span{
+	width: 15px;
+	height: 15px;
+	color: #fff;
+	/* display: inline-block; */
+	line-height: 15px;
+	font-size: 12px;
+	position: absolute;
+	background-color: #f10215;
+	top: 5px;
+	left: 140px;
+	min-width: 12px;
+	border-radius: 7px;
+}
+/* 右下广告 */
+.computer{
+	/* width: 190px;
+	height: 40px; */  /* a会撑开盒子 */
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+}
+/* 搜索框下面部分 */
+.navitems{
+	position: absolute;
+	bottom: 0;
+	left: 230px;
+}
+.navitems li{
+	float: left;
+	margin:0 11px;
+}
+.navitems li a{
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	font-size: 15px;
+	color: #333;
+}
+.navitems .redweight{
+	color: #e1251b;
+	font-weight: 700;
+}
+.navitems li a:hover{
+	color: #c81623;
+}
+/* footer 开始 */
+.footer{
+	background-color: #eaeaea;
+}
+/* 多快好省开始 */
+.footer-server{
+	border-bottom: 1px solid #dedede;
+	padding: 30px 0;
+	overflow: hidden;
+}
+.footer-server-inner{
+	background-color: pink;
+}
+.footer-server-inner li{
+	float: left;
+	width: 297px;
+	height: 43px;
+	/* background-color: blue; */
+}
+.unit{
+	width: 225px;
+	height: 43px;
+	margin: 0 auto;
+	position: relative;
+}
+.unit h5{
+	width: 36px;
+	height: 43px;
+	text-indent: -9999px;
+	overflow: hidden;
+	position: absolute;
+	background: url('../images/ico.png') no-repeat;
+}                  /* 精灵图 */
+.unit p{
+	font-size:18px;
+	font-weight: 700;
+	margin-left: 45px;
+	line-height: 43px;
+}
+.unit .kuai{
+	background-position: 0 -43px;
+}
+.unit .hao{
+	background-position: 0 -86px;
+}
+.unit .sheng{
+	background-position: 0 -130px;
+}
+/* 多快好省结束 */
+/* 帮助模块开始 */
+.help{
+	height: 180px;
+	padding-top: 20px;
+	border-bottom: 1px solid #dedede; 
+}
+.help dl{
+	width: 196px;
+	float: left;
+}
+.help dt{
+	font-size: 14px;
+	font-weight: 700;
+	color: #666;
+	height: 28px;
+}
+.help dd{
+	height: 22px;
+}
+.help dd a{
+	font-size: 12px;
+	color: #727272;
+}
+.help dd a:hover{
+	color: #f10215;
+}
+/* 右边小地图 */
+.help .cover{
+	width: 207px;
+	height: 150px;
+	float: right;
+	background: url(../images/ico_footer.png) no-repeat;
+}
+.cover dt{
+	text-align: center;
+}
+.help .info{
+	width: 180px;
+	height: 52.8px;
+	margin-left: 10px;
+	margin-top: 5px;
+	font-size: 12px;
+	color: #727272;
+	line-height: 18px;
+}
+.help .cover dd{
+	text-align: right;
+	padding-right: 15px;
+}
+/* 帮助模块结束 */
+/* 版权模块 */
+.copyright{
+	border-top: 1px solid #dedede;
+}
+.link{
+	text-align: center;
+	margin-top: 10px;
+}
+.link a{
+	font-size: 12px;
+	color: #727272;
+}
+.link span{
+	color: #ccc;
+	font-size: 12px;
+	margin: 0 5px;
+}
+.copy-info p{
+	text-align: center;
+	font-size: 12px;
+	color: #999;
+	line-height: 22px;
+}
+.copy-info{
+	padding-top: 10px;
+}
+.copy-info span{
+	color: #999;
+	font-size: 12px;
+	margin: 0 5px;
+}
+.tupian{
+	text-align: center;
+}
+.tupian a{
+	width: 103px;
+	height: 32px;
+	background-color: pink;
+	display: inline-block;
+	background: url(../images/ico_footer.png) no-repeat 0 -151px;
+}
+.tupian .kexin{
+	background-position: -104px -151px;
+}
+/* footer结束 */

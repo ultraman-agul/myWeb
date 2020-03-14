@@ -1,0 +1,261 @@
+	/* 通栏 */
+.jd{
+	height: 480px;
+	/* background-color: pink; */
+	position: relative;
+}	
+	/* 版心部分 */
+.jd-inner{
+	/* background-color: skyblue; */	
+	height: 480px;
+	position: relative;/*  要有定位的才能用z-index */
+	z-index: 1;   
+}	
+	/* 两边广告部分 */
+.ad{
+	height: 100%;
+	width: 100%; /* 一定要写，position会转换成行内块，根据内容多少定宽度 */
+	background: url(../images/bg.png) no-repeat top center;
+	position: absolute;/* 浮动、绝对定位、固定定位的盒子肯定要有宽度 */
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+.ad a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+/* 最左一栏开始 */
+.jd-cho1{
+	width:190px;
+	height: 480px;
+	background-color: #656568;
+	float: left;
+}
+.jd-cho1 ul{
+	margin-top: 10px;
+}
+.jd-cho1 ul li{
+	padding-left: 18px;
+	width: 172px;
+	height: 25px;
+	line-height: 25px;
+	/* background-color: pink; */
+}
+.jd-cho1 li a{
+	font-size: 14px;
+	color: #fff;
+}
+.jd-cho1 li a:hover{
+	color: #c81623;
+}
+.jd-cho1 li:hover{
+	background-color: #999395;
+}
+.jd-cho1 ul li span{
+	font-size: 12px;
+	color: #636363;
+}
+/* 最左一栏结束 */
+/* 中间栏部分开始 */
+.jd-cho2{
+	width: 790px;
+	height: 480px;
+	/* background-color: yellow; */
+	float: left;
+	margin-left: 10px;
+}
+/* 轮播图 */
+.jd-cho2 .arr-hd{
+	height: 340px;
+	width: 790px;
+	margin-bottom: 10px;
+	position: relative;
+}
+/* 左右小箭头按钮 */
+.lun-l,.lun-r{
+	position: absolute;
+	width: 30px;
+	height: 60px;
+	background: rgba(0, 0, 0, .1);
+	top: 50%;
+	margin-top: -30px;
+	line-height:60px;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;	
+	border-radius: 0 30px 30px 0;
+}
+.lun-r{
+	right: 0;
+	border-radius: 30px 0 0 30px;
+}
+.lun-l:hover,.lun-r:hover{
+	background: rgba(0,0,0,.4)
+}
+/* 下方的一组小圆点 */
+.arr-hd ol{
+	width: 180px;
+	height: 20px;
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -90px;
+	border-radius: 10px;
+	background:rgba(255,255,255,.3);
+}
+.arr-hd ol li{
+	height: 12px;
+	width: 12px;
+	background-color: #fff;
+	margin: 4px 5px;
+	border-radius: 6px;
+	float: left;
+	cursor: pointer;
+}
+.arr-hd ol .current{
+	background-color: #f10215;
+}
+/* 两组广告 */
+.jd-cho2 .arr-bd div{
+	width: 390px;
+	height: 130px;
+	float: left;
+}
+.jd-cho2 .arr-bd .bd-l{
+	margin-right: 10px;
+}
+
+/* 中间栏部分结束 */
+.jd-cho3{
+	width: 190px;
+	height: 480px;
+	/* background-color: purple; */
+	float: right;
+}
+.user{
+	height: 95px;
+	/* background-color: pink; */
+	padding:20px 15px 0;
+	position: relative;
+}
+.info{
+	height: 40px;
+	padding-left: 54px;
+	font-size: 12px;
+	line-height: 22px;
+	color: #666;
+}
+.info a{
+	color: #666;	
+}
+.info a:hover{
+	color: #f10215;
+}
+.imgg{
+	display: block;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 20px;
+	left: 15px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.imgg img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.user .profit{
+	margin-top: 15px;
+}
+.user .profit a{
+	display: inline-block;
+	height: 20px;
+	width: 68px;
+	border: 2px solid #f10215;
+	font-size: 12px;
+	color: #f10215;
+	margin-right: 5px;
+	line-height: 20px;
+	text-align: center;
+}
+.user .profit a:hover{
+	color: #fff;
+	background-color: #f10215;
+}
+.news{
+	height: 144px;
+	padding: 10px 15px 0;
+	/* background-color: red; */
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+.news-hd {
+	position: relative;
+	border-bottom: 1px solid #ccc;
+}
+.news-hd .cuxiao{
+	border-right: 1px solid #ccc;
+	padding-right: 10px;
+}
+.news-hd a{
+	font-size: 12px;
+	color: #666;
+	margin-right: 5px;
+}
+.news-hd .more1{
+	width: 30px;
+	position: absolute;
+	top: 4px;
+	right: 0;
+}
+.news-hd .line{
+	height: 2px;
+	width: 24px;
+	background-color: #f10215;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.news-bd{
+	margin-top: 15px;
+}
+.news-bd ul li a{
+	display: block;
+	height: 23px;
+	line-height: 23px;
+	color: #747474;
+	font-size: 12px;
+}
+.jd-service{
+	height: 209px;
+	/* background-color: yellow; */
+	overflow: hidden;
+}
+.jd-service ul{
+	width: 195px;
+}
+.jd-service li{
+	width: 47px;
+	height: 69px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	float: left;
+}
+.jd-service li i{
+	display: block;
+	width: 24px;
+	height: 24px;
+	margin: 15px auto 8px;
+	background: url('../images/sprite_fs@1x.png') no-repeat;
+	/* background-color: pink; */
+}
+.jd-service li p{
+	text-align: center;
+	font-size: 12px;
+	color: #727272;
+}
