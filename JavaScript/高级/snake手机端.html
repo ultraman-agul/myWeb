@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>snake</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		main{
+			width:800px;
+			margin:100px auto;
+		}
+		h1{
+			text-align: center;
+			color:#191970;
+		}
+		.btn{
+			width:100px;
+			height:30px;
+		}
+		.btnarea{
+			/*width:400px;*/
+			text-align: center;
+		}
+		#left{
+			margin-right:200px;
+		}
+		.btn1{
+			height:100px;
+			width: 100px;
+			margin:20px;
+			font-size:50px;
+		}
+		#gittle{
+			font-size: 25px;
+			font-weight: blod;
+			text-align: center;
+			display: block;
+		}
+		#gnum{
+			color:hotpink;
+
+		}
+	</style>
+</head>
+<body>
+	<main id="main">
+		<h1>贪吃蛇  --agul</h1>	
+		<span id="gittle">第<span id="gnum">1</span>关</span>	
+		<input type="button" value="开始游戏" id="begin" class="btn">
+		<input type="button" value="暂停游戏" id="pause" class="btn">	
+	</main>
+	<div class="btnarea">
+		<input type="button" value="上" id="up" class="btn1"> <br>
+		<input type="button" value="左" id="left" class="btn1">
+		<input type="button" value="右" id="right" class="btn1"><br>
+		<input type="button" value="下" id="down" class="btn1">
+	</div>
+	<script>
+		var main = document.getElementById('main');
+		var showcanvas=false; //是否显示画布
+		//地图的构造方法
+		function Map(atom,xnum,ynum){
+			this.atom = atom; //原子，类似于像素
+			this.xnum = xnum; //横向个数
+			this.ynum = ynum; //竖直个数
+			this.canvas = null;
+			//创建画布的方法，也就是地图
+			this.create = function(){
+				this.canvas = document.createElement('div');
+				this.canvas.style.cssText="position:relative;top:40px;border:1px solid darkred;background-color:#FAFAFA";
+				this.canvas.style.width=this.atom*this.xnum+'px';//画布宽度
+				this.canvas.style.height=this.atom*this.ynum+'px';//画布高度
+				main.appendChild(this.canvas);
+				if(showcanvas)
+				{
+					for(var y=0;y<ynum;y++)
+					{
+						for(var x=0;x<xnum;x++)
+						{
+							var a=document.createElement('div');
+						a.style.cssText="border:1px solid yellow;background-color:green;position:absolute";
+						a.style.width=atom+'px';
+						a.style.height=atom+'px';
+						a.style.left=x*atom+'px';
+						a.style.top=y*atom+'px';
+						this.canvas.appendChild(a);
+						}
+					}
+				}
+			}
+		}
+
+		//创建食物对象
+		function Food(map)
+		{
+			this.width=map.atom;
+			this.height=map.atom;
+			this.bgcolor='rgb('+Math.floor(Math.random()*200)+','+Math.floor(Math.random()*200)+','+Math.floor(Math.random()*200)+')';
+			this.x=Math.floor(Math.random()*map.xnum);
+			this.y=Math.floor(Math.random()*map.ynum);
+			this.flag=document.createElement('div');
+			this.flag.style.height=this.height+'px';
+			this.flag.style.width=this.width+'px';
+			this.flag.style.position="absolute";
+			this.flag.style.left=this.width*this.x+'px';
+			this.flag.style.top=this.height*this.y+'px';
+			this.flag.style.borderRadius="50%";
+			this.flag.style.backgroundColor=this.bgcolor;
+			map.canvas.appendChild(this.flag);
+		}
+
+		//创建蛇对象
+		function Snake(map)
+		{
+			//设置宽度高度
+			this.width=map.atom;
+			this.height=map.atom;
+			// 设置方向
+			this.direction='right';
+			this.body=[	{x:2,y:0},//蛇头
+						{x:1,y:0},//蛇脖子		
+						{x:0,y:0}]; //蛇尾
+			//追加到画布中显示蛇
+			this.display=function(){
+				for(var i=0;i<this.body.length;i++)
+				{
+					var s=document.createElement('div');
+					if(this.body[i].x!=null){//当吃到食物时，x==null，不能新建，不然就在0，0处新建
+						//将节点保存在一个状态变量中，以便以后删除
+						this.body[i].flag=s;	
+					//设置蛇的样式
+					s.style.width=this.width+'px';
+					s.style.height=this.height+'px';
+					s.style.backgroundColor='rgb('+Math.floor(Math.random()*200)+','+Math.floor(Math.random()*200)+','+Math.floor(Math.random()*200)+')';
+					// s.style.borderRadius="50%";
+					}
+					s.style.position="absolute";
+					s.style.left=this.body[i].x*this.width+'px';
+					s.style.top=this.body[i].y*this.height+'px';
+					map.canvas.appendChild(s);
+				}
+			}
+
+			//让蛇运动起来
+			this.run = function(){
+				//蛇尾取代蛇头位置
+				for(var i=this.body.length-1;i>0;i--)
+				{
+					this.body[i].x=this.body[i-1].x;
+					this.body[i].y=this.body[i-1].y;
+				}
+				//蛇头方向，+1位置
+				switch(this.direction)
+				{
+					case "up":
+						this.body[0].y -=1;
+						break;
+					case "down":
+						this.body[0].y +=1;
+						break;
+					case "left":
+						this.body[0].x -=1;
+						break;
+					case "right":
+						this.body[0].x +=1;
+						break;
+				}
+
+				//判断蛇头吃到食物，蛇头位置和食物位置一致
+				if(this.body[0].x==food.x&&this.body[0].y==food.y)
+				{
+					//追加值为空的一节到蛇尾位置
+					this.body.push({x:null,y:null,flag:null});
+					//删除食物
+					map.canvas.removeChild(food.flag);
+					food=new Food(map);	 //新建食物
+				}
+
+				//判断是否升级
+				if(this.body.length>le.slength)
+				{
+					le.set();
+				}
+				//判断蛇头是否出界
+				if(this.body[0].x<0||this.body[0].x>map.xnum-1||this.body[0].y<0||this.body[0].y>map.ynum-1)
+				{
+					clearInterval(timer);//清除定时器
+					alert('真笨呀，活活地撞墙死掉了！');
+					//重新开始游戏
+					restart(map,this);	
+					return false;
+				}
+				//判断蛇头是否和自己重合
+				for(var i=4;i<this.body.length;i++)
+				if(this.body[0].x == this.body[i].x && this.body[0].y == this.body[i].y)
+				{
+					alert('真笨啊，把自己给咬死了！');
+					restart(map,this);
+					return false;
+				}
+				//移除已存在的蛇
+				for(var i=0;i<this.body.length;i++)
+				{
+					if(this.body[i].flag!=null)//当吃到食物时新建的蛇不能被删
+						map.canvas.removeChild(this.body[i].flag);	
+				} 
+			this.display();
+			}
+		}
+
+		//重新开始游戏
+		function restart(map,snake)
+		{
+			for(var i=0;i<snake.body.length;i++)
+			{
+				map.canvas.removeChild(snake.body[i].flag); //去除画布中的蛇
+			}
+			snake.body=[{x:2,y:0},{x:1,y:0},{x:0,y:0}]; //初始化蛇
+			snake.direction="right";
+			snake.display();
+			map.canvas.removeChild(food.flag); //去除画布中的食物
+			food = new Food(map); //新的食物
+		}
+
+		//创建级别对象
+		function Level(){
+			this.num=1; //级别数
+			this.speek=300; //毫秒,每升一级减少20，速度加快
+			this.slength=8;//每个关级别的长度判断
+			this.set=function(){
+				this.num++;
+				if(this.speek<=50)
+				{
+					this.speek=50;
+				}
+				else
+				{
+					this.speek -= 20;
+				}
+				this.slength += 3; //设置下一次升级的目标，吃三个就可以升级
+				this.display();	
+				start();//开始升级后的效果  速度加快
+			}
+			this.display=function(){
+				document.getElementById('gnum').innerHTML=this.num;
+			}
+			
+		}
+
+		//创建级别对象
+		var le = new Level();
+		le.display();
+		//创建地图对象
+		var map = new Map(20,40,20);
+		map.create(); //创建显示画布
+		//创建食物对象
+		var food = new Food(map);
+		//创建蛇对象
+		var snake = new Snake(map);
+		//显示蛇
+		snake.display();
+		//给body添加键盘事件，控制上下左右
+		document.getElementById("up").onclick=function(){
+			if(snake.direction!="down")
+						snake.direction="up";
+				}
+		document.getElementById("down").onclick=function(){
+			if(snake.direction!="up")
+						snake.direction="down";
+				}
+		document.getElementById("left").onclick=function(){
+			if(snake.direction!="right")
+						snake.direction="left";
+				}
+		document.getElementById("right").onclick=function(){
+			if(snake.direction!="left")
+						snake.direction="right";
+				}
+			
+
+		//开始游戏
+		function start(){
+			if(timer)
+				clearInterval(timer);
+			timer=setInterval(function(){
+				snake.run();
+			},le.speek);
+		}
+		//定时器
+		var timer;
+		document.getElementById('begin').onclick=function(){
+			start();
+		}	
+		//清除定时器
+		document.getElementById('pause').onclick=function(){
+			clearInterval(timer);
+		}	
+	</script>
+</body>
+</html>
