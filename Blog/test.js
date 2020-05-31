@@ -1,0 +1,1 @@
+console.log(JSON.stringify({path:"/admin/user-edit",message:"你好"}))

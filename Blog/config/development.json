@@ -1,0 +1,9 @@
+{
+    "db": {
+        "user": "ultraman",
+        "pwd": "ultraman",
+        "host": "localhost",
+        "port": "27017",
+        "name": "blog"
+    }
+}
